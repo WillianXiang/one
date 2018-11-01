@@ -46,6 +46,9 @@ module.exports = {
     }],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'linebreak-style': [0, 'error', 'windows']
+    'linebreak-style': [0, 'error', 'windows'],
+    'quotes': [1, "single"], //引号类型 `` "" ''
+    "no-console": 0,
+    // 'no-console': ["error", { allow: ["warn", "error"] }],
   }
 }
