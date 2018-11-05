@@ -1,19 +1,10 @@
-/* eslint-disable */
 <template>
-  <!--<div class="hello">-->
-    <!--<van-list-->
-      <!--v-model="loading"-->
-      <!--:finished="finished"-->
-      <!--@load="getData">-->
       <vueWaterfallEasy :imgsArr="imgsArr" @scrollReachBottom="test" @click="clickFn">
         <!--<div class="img-info" slot-scope="props">-->
           <!--<p class="some-info">picture index: {{props.index}}</p>-->
           <!--<p class="some-info">{{props.value.info}}</p>-->
         <!--</div>-->
       </vueWaterfallEasy>
-    <!--</van-list>-->
-    <!--<one-item v-for="(item, index) in this.pic" :item="item" :key="index"/>-->
-  <!--</div>-->
 </template>
 
 <script>
@@ -84,7 +75,7 @@ export default {
         })
           .then((res) => {
             this.imgsArr = this.imgsArr.concat(res.data);
-            this.group = this.group + 1;
+            this.group += 1;
           });
       }
     },
