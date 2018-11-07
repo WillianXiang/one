@@ -12,7 +12,7 @@ import vueWaterfallEasy from 'vue-waterfall-easy';
 import axios from 'axios';
 import Vue from 'vue';
 import { List } from 'vant';
-import OneItem from './OneItem';
+import OneItem from './Page2';
 
 Vue.use(List);
 
@@ -55,7 +55,7 @@ export default {
           let temp = [];
           for (let i = 0; i < res.data.length; i += 1) {
             res.data[i].src = 'https://lfyfly.github.io/vue-waterfall-easy/demo/'.concat(res.data[i].src);
-            console.log('src', res.data[i].src);
+            // console.log('src', res.data[i].src);
           }
           this.imgsArr = this.imgsArr.concat(res.data);
           // this.group++;
@@ -67,16 +67,11 @@ export default {
       // Do it only when you click on the image
       if (event.target.tagName.toLowerCase() === 'img') {
         console.log('img clicked', index, value);
-        console.log('img clicked', this.imgsArr);
-        const urlTemp = 'https://lfyfly.github.io/vue-waterfall-easy/demo/static/mock/data.json?group='.concat(this.group);
-        axios({
-          method: 'get',
-          url: urlTemp,
-        })
-          .then((res) => {
-            this.imgsArr = this.imgsArr.concat(res.data);
-            this.group += 1;
-          });
+        if (index % 2 === 0) {
+          this.$router.push('page1');
+        } else {
+          this.$router.push('page2');
+        }
       }
     },
   },
