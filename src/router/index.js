@@ -3,15 +3,20 @@ import Router from 'vue-router';
 import HelloWorld from '@/components/HelloWorld';
 import Page2 from '@/components/Page2';
 import Page1 from '@/components/Page1';
+import Info from '@/components/Info';
 
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld,
+      children: [{
+        path: 'info', component: Info,
+      }],
       meta: {
         keepAlive: true, // 此组件需要被缓存
       },
@@ -21,7 +26,7 @@ export default new Router({
       name: 'Page1',
       component: Page1,
       meta: {
-        keepAlive: false, // 此组件需要被缓存
+        keepAlive: true, // 此组件需要被缓存
       },
     },
     {
@@ -29,7 +34,7 @@ export default new Router({
       name: 'Page2',
       component: Page2,
       meta: {
-        keepAlive: false, // 此组件需要被缓存
+        keepAlive: true, // 此组件需要被缓存
       },
     },
   ],

@@ -1,10 +1,15 @@
 <template>
-      <vueWaterfallEasy :imgsArr="imgsArr" @scrollReachBottom="test" @click="clickFn">
-        <!--<div class="img-info" slot-scope="props">-->
-          <!--<p class="some-info">picture index: {{props.index}}</p>-->
-          <!--<p class="some-info">{{props.value.info}}</p>-->
-        <!--</div>-->
-      </vueWaterfallEasy>
+      <!--<vueWaterfallEasy :imgsArr="imgsArr" @scrollReachBottom="test" @click="clickFn">-->
+        <!--&lt;!&ndash;<div class="img-info" slot-scope="props">&ndash;&gt;-->
+          <!--&lt;!&ndash;<p class="some-info">picture index: {{props.index}}</p>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p class="some-info">{{props.value.info}}</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--</vueWaterfallEasy>-->
+  <div>
+    <div v-for="(item,index) in imgsArr" :key="index" @click="click">
+      <img :src="item.src"/>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -68,12 +73,15 @@ export default {
       if (event.target.tagName.toLowerCase() === 'img') {
         console.log('img clicked', index, value);
         if (index % 2 === 0) {
-          this.$router.push('page1');
+          this.$router.push('/helloWorld/info');
         } else {
           this.$router.push('page2');
         }
       }
     },
+    click() {
+      this.$router.push('page2');
+    }
   },
   components: {
     OneItem,

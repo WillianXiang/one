@@ -1,13 +1,9 @@
 <template>
   <div id="app">
-    <transition name="bounce">
-      <keep-alive>
-        <router-view  v-if="$route.meta.keepAlive"/>
-      </keep-alive>
-    </transition>
-    <transition name="bounce">
-      <router-view  v-if="!$route.meta.keepAlive"/>
-    </transition>
+    <keep-alive>
+      <router-view  v-if="$route.meta.keepAlive"/>
+    </keep-alive>
+    <router-view  v-if="!$route.meta.keepAlive"/>
   </div>
 </template>
 
