@@ -1,24 +1,30 @@
 import axios from 'axios';
+import { test } from '../customConf';
 
 const state = {
   home_img_arr: [],
+  pageIndex: 0,
 };
 const getters = {};
 const actions = {
   homeInit(context) {
-    axios.get('https://lfyfly.github.io/vue-waterfall-easy/demo/static/mock/data.json?group=0')
+    axios.get(test.homeUrl, {
+      params: {
+        index: this.pageIndex + 1,
+        size: test.pageSize,
+      } })
       .then((res) => {
         /* eslint-disable */
         let temp = [];
         for (let i = 0; i < res.data.length; i += 1) {
-          res.data[i].src = 'https://lfyfly.github.io/vue-waterfall-easy/demo/'.concat(res.data[i].src);
+          res.data[i].src = test.imagePrefix.concat(res.data[i].src);
           res.data[i].width = 20;
           res.data[i].height = 20;
           // temp.push(res.data[i]);
         }
         /* eslint-disable */
         temp = temp.concat(res.data);
-        context.commit({type:'homeInit',data:temp})
+        context.commit({type: 'homeInit',data: temp})
       });
   }
 };
